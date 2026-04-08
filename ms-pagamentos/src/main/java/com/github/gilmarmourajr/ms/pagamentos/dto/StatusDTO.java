@@ -1,6 +1,6 @@
-package com.github.FernandoNakasone.ms.pagamentos.dto;
+package com.github.gilmarmourajr.ms.pagamentos.dto;
 
-import com.github.FernandoNakasone.ms.pagamentos.entities.Status;
+import com.github.gilmarmourajr.ms.pagamentos.entities.Status;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

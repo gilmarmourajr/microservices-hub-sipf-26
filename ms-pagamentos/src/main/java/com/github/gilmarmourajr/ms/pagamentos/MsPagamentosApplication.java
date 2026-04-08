@@ -1,4 +1,4 @@
-package com.github.FernandoNakasone.ms.pagamentos;
+package com.github.gilmarmourajr.ms.pagamentos;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

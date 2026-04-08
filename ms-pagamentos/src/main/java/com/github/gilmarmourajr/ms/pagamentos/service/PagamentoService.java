@@ -1,9 +1,11 @@
-package com.github.FernandoNakasone.ms.pagamentos.service;
+package com.github.gilmarmourajr.ms.pagamentos.service;
 
-import com.github.FernandoNakasone.ms.pagamentos.dto.PagamentoDTO;
-import com.github.FernandoNakasone.ms.pagamentos.entities.Pagamento;
-import com.github.FernandoNakasone.ms.pagamentos.exceptions.ResourceNotFoundException;
-import com.github.FernandoNakasone.ms.pagamentos.repositories.PagamentoRepository;
+import com.github.gilmarmourajr.ms.pagamentos.dto.PagamentoDTO;
+import com.github.gilmarmourajr.ms.pagamentos.entities.Pagamento;
+import com.github.gilmarmourajr.ms.pagamentos.entities.Status;
+import com.github.gilmarmourajr.ms.pagamentos.exceptions.ResourceNotFoundException;
+import com.github.gilmarmourajr.ms.pagamentos.repositories.PagamentoRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,4 +32,44 @@ public class PagamentoService {
         return new PagamentoDTO(pagamento);
     }
 
+    @Transactional
+    public PagamentoDTO savePagamento(PagamentoDTO pagamentoDTO){
+        Pagamento pagamento = new Pagamento();
+        mapperDtoToPagamento(pagamentoDTO, pagamento);
+        pagamento.setStatus(Status.CRIADO);
+        pagamento = pagamentoRepository.save(pagamento);
+        return new PagamentoDTO(pagamento);
+    }
+
+    private void mapperDtoToPagamento(PagamentoDTO pagamentoDTO, Pagamento pagamento) {
+        pagamento.setValor(pagamentoDTO.getValor());
+        pagamento.setNome(pagamentoDTO.getNome());
+        pagamento.setNumeroCartao(pagamentoDTO.getNumeroCartao());
+        pagamento.setValidade(pagamentoDTO.getValidade());
+        pagamento.setCodigoSeguranca(pagamentoDTO.getCodigoSeguranca());
+        pagamento.setPedidoId(pagamentoDTO.getPedidoId());
+    }
+
+    @Transactional
+    public PagamentoDTO updatePagamento(Long id, PagamentoDTO pagamentoDTO){
+
+        try {
+            Pagamento pagamento = pagamentoRepository.getReferenceById(id);
+            mapperDtoToPagamento(pagamentoDTO, pagamento);
+            pagamento.setStatus(pagamentoDTO.getStatus());
+            pagamento = pagamentoRepository.save(pagamento);
+            return new PagamentoDTO(pagamento);
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException("Recurso não encontrado. ID: " + id);
+        }
+    }
+
+    @Transactional
+    public void deletePagamentoById(Long id){
+
+        if(!pagamentoRepository.existsById(id)){
+            throw new ResourceNotFoundException("Recurso não encontrado. ID: " + id);
+        }
+        pagamentoRepository.deleteById(id);
+    }
 }
