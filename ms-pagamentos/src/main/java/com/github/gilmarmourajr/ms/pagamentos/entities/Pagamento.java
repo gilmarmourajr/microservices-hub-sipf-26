@@ -1,4 +1,4 @@
-package com.github.FernandoNakasone.ms.pagamentos.entities;
+package com.github.gilmarmourajr.ms.pagamentos.entities;
 
 import jakarta.persistence.*;
 import lombok.*;

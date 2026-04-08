@@ -1,7 +1,7 @@
-package com.github.FernandoNakasone.ms.pagamentos.dto;
+package com.github.gilmarmourajr.ms.pagamentos.dto;
 
-import com.github.FernandoNakasone.ms.pagamentos.entities.Pagamento;
-import com.github.FernandoNakasone.ms.pagamentos.entities.Status;
+import com.github.gilmarmourajr.ms.pagamentos.entities.Pagamento;
+import com.github.gilmarmourajr.ms.pagamentos.entities.Status;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;

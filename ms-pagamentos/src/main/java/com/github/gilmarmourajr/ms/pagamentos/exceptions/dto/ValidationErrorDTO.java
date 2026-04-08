@@ -1,4 +1,4 @@
-package com.github.FernandoNakasone.ms.pagamentos.exceptions.dto;
+package com.github.gilmarmourajr.ms.pagamentos.exceptions.dto;
 
 import lombok.Getter;
 

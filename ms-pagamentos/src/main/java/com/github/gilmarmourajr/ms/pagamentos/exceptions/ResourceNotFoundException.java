@@ -1,4 +1,4 @@
-package com.github.FernandoNakasone.ms.pagamentos.exceptions;
+package com.github.gilmarmourajr.ms.pagamentos.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException{
 

@@ -1,9 +1,9 @@
-package com.github.FernandoNakasone.ms.pagamentos.exceptions.handler;
+package com.github.gilmarmourajr.ms.pagamentos.exceptions.handler;
 
-import com.github.FernandoNakasone.ms.pagamentos.exceptions.DatabaseException;
-import com.github.FernandoNakasone.ms.pagamentos.exceptions.ResourceNotFoundException;
-import com.github.FernandoNakasone.ms.pagamentos.exceptions.dto.CustomErrorDTO;
-import com.github.FernandoNakasone.ms.pagamentos.exceptions.dto.ValidationErrorDTO;
+import com.github.gilmarmourajr.ms.pagamentos.exceptions.DatabaseException;
+import com.github.gilmarmourajr.ms.pagamentos.exceptions.ResourceNotFoundException;
+import com.github.gilmarmourajr.ms.pagamentos.exceptions.dto.CustomErrorDTO;
+import com.github.gilmarmourajr.ms.pagamentos.exceptions.dto.ValidationErrorDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
