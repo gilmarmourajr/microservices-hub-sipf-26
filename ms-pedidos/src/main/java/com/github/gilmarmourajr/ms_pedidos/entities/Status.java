@@ -1,4 +1,4 @@
-package com.github.FernandoNakasone.ms_pedidos.entities;
+package com.github.gilmarmourajr.ms_pedidos.entities;
 
 public enum Status {
 

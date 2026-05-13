@@ -32,44 +32,48 @@ public class PagamentoService {
         return new PagamentoDTO(pagamento);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public PagamentoDTO savePagamento(PagamentoDTO pagamentoDTO){
         Pagamento pagamento = new Pagamento();
-        mapperDtoToPagamento(pagamentoDTO, pagamento);
         pagamento.setStatus(Status.CRIADO);
+        mapperDtoToPagamento(pagamentoDTO,pagamento);
         pagamento = pagamentoRepository.save(pagamento);
+
         return new PagamentoDTO(pagamento);
     }
 
-    private void mapperDtoToPagamento(PagamentoDTO pagamentoDTO, Pagamento pagamento) {
-        pagamento.setValor(pagamentoDTO.getValor());
+    public void  mapperDtoToPagamento(PagamentoDTO pagamentoDTO, Pagamento pagamento){
+        pagamento.setId(pagamentoDTO.getId());
         pagamento.setNome(pagamentoDTO.getNome());
+        pagamento.setValor(pagamentoDTO.getValor());
         pagamento.setNumeroCartao(pagamentoDTO.getNumeroCartao());
         pagamento.setValidade(pagamentoDTO.getValidade());
         pagamento.setCodigoSeguranca(pagamentoDTO.getCodigoSeguranca());
         pagamento.setPedidoId(pagamentoDTO.getPedidoId());
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public PagamentoDTO updatePagamento(Long id, PagamentoDTO pagamentoDTO){
-
         try {
             Pagamento pagamento = pagamentoRepository.getReferenceById(id);
             mapperDtoToPagamento(pagamentoDTO, pagamento);
             pagamento.setStatus(pagamentoDTO.getStatus());
             pagamento = pagamentoRepository.save(pagamento);
+
             return new PagamentoDTO(pagamento);
-        } catch (EntityNotFoundException e) {
-            throw new ResourceNotFoundException("Recurso não encontrado. ID: " + id);
+        } catch (EntityNotFoundException e){
+            throw new ResourceNotFoundException("Recurso não encontrado. ID:" + id);
         }
     }
 
     @Transactional
     public void deletePagamentoById(Long id){
-
         if(!pagamentoRepository.existsById(id)){
-            throw new ResourceNotFoundException("Recurso não encontrado. ID: " + id);
+            throw new ResourceNotFoundException("Recurso não encontrado. ID:" + id);
         }
+
         pagamentoRepository.deleteById(id);
+
     }
+
 }

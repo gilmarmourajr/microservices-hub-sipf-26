@@ -1,9 +1,7 @@
 package com.github.gilmarmourajr.ms.pagamentos.controller;
 
 import com.github.gilmarmourajr.ms.pagamentos.dto.PagamentoDTO;
-import com.github.gilmarmourajr.ms.pagamentos.entities.Pagamento;
 import com.github.gilmarmourajr.ms.pagamentos.service.PagamentoService;
-import jakarta.servlet.Servlet;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,15 +26,17 @@ public class PagamentoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PagamentoDTO> getById(@PathVariable Long id){
+    public ResponseEntity<PagamentoDTO> getPagamentoById(@PathVariable @Valid Long id){
 
         PagamentoDTO pagamentoDTO = pagamentoService.findPagamentoById(id);
         return ResponseEntity.ok(pagamentoDTO);
     }
 
     @PostMapping
-    private ResponseEntity<PagamentoDTO> createPagamento(@RequestBody @Valid PagamentoDTO pagamentoDTO) {
+    public ResponseEntity<PagamentoDTO> createPagamento(@Valid @RequestBody PagamentoDTO pagamentoDTO){
+
         pagamentoDTO = pagamentoService.savePagamento(pagamentoDTO);
+
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequestUri()
                 .path("/{id}")
@@ -47,17 +47,17 @@ public class PagamentoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PagamentoDTO> updateProduto(@PathVariable Long id, @Valid @RequestBody PagamentoDTO pagamentoDTO) {
-        pagamentoDTO = pagamentoService.updatePagamento(id, pagamentoDTO);
+    public ResponseEntity<PagamentoDTO> updatePagamento(@PathVariable Long id, @RequestBody @Valid PagamentoDTO pagamentoDTO){
+        pagamentoDTO = pagamentoService.updatePagamento(id,pagamentoDTO);
 
         return ResponseEntity.ok(pagamentoDTO);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePagamento(@PathVariable Long id){
-
         pagamentoService.deletePagamentoById(id);
 
         return ResponseEntity.noContent().build();
     }
+
 }

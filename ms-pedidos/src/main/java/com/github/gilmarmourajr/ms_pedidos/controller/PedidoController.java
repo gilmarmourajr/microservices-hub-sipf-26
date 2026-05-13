@@ -1,7 +1,7 @@
-package com.github.FernandoNakasone.ms_pedidos.controller;
+package com.github.gilmarmourajr.ms_pedidos.controller;
 
-import com.github.FernandoNakasone.ms_pedidos.Service.PedidoService;
-import com.github.FernandoNakasone.ms_pedidos.dto.PedidoDTO;
+import com.github.gilmarmourajr.ms_pedidos.Service.PedidoService;
+import com.github.gilmarmourajr.ms_pedidos.dto.PedidoDTO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

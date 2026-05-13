@@ -1,4 +1,4 @@
-package com.github.FernandoNakasone.ms_pedidos;
+package com.github.gilmarmourajr.ms_pedidos;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

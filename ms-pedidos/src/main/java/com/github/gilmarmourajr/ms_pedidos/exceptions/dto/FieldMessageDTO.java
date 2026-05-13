@@ -1,4 +1,4 @@
-package com.github.FernandoNakasone.ms_pedidos.exceptions.dto;
+package com.github.gilmarmourajr.ms_pedidos.exceptions.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

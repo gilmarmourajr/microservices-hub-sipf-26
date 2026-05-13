@@ -1,13 +1,13 @@
-package com.github.FernandoNakasone.ms_pedidos.Service;
+package com.github.gilmarmourajr.ms_pedidos.Service;
 
-import com.github.FernandoNakasone.ms_pedidos.dto.ItemDoPedidoDTO;
-import com.github.FernandoNakasone.ms_pedidos.dto.PedidoDTO;
-import com.github.FernandoNakasone.ms_pedidos.entities.ItemDoPedido;
-import com.github.FernandoNakasone.ms_pedidos.entities.Pedido;
-import com.github.FernandoNakasone.ms_pedidos.entities.Status;
-import com.github.FernandoNakasone.ms_pedidos.exceptions.ResourceNotFoundException;
-import com.github.FernandoNakasone.ms_pedidos.repositories.ItemDoPedidoRepository;
-import com.github.FernandoNakasone.ms_pedidos.repositories.PedidoRepositoy;
+import com.github.gilmarmourajr.ms_pedidos.dto.ItemDoPedidoDTO;
+import com.github.gilmarmourajr.ms_pedidos.dto.PedidoDTO;
+import com.github.gilmarmourajr.ms_pedidos.entities.ItemDoPedido;
+import com.github.gilmarmourajr.ms_pedidos.entities.Pedido;
+import com.github.gilmarmourajr.ms_pedidos.entities.Status;
+import com.github.gilmarmourajr.ms_pedidos.exceptions.ResourceNotFoundException;
+import com.github.gilmarmourajr.ms_pedidos.repositories.ItemDoPedidoRepository;
+import com.github.gilmarmourajr.ms_pedidos.repositories.PedidoRepositoy;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

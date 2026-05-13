@@ -1,4 +1,4 @@
-package com.github.FernandoNakasone.ms_pedidos.exceptions;
+package com.github.gilmarmourajr.ms_pedidos.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException{
 

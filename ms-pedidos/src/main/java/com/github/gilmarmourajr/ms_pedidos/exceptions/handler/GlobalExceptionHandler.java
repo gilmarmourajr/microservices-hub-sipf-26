@@ -1,9 +1,9 @@
-package com.github.FernandoNakasone.ms_pedidos.exceptions.handler;
+package com.github.gilmarmourajr.ms_pedidos.exceptions.handler;
 
-import com.github.FernandoNakasone.ms_pedidos.exceptions.DatabaseException;
-import com.github.FernandoNakasone.ms_pedidos.exceptions.ResourceNotFoundException;
-import com.github.FernandoNakasone.ms_pedidos.exceptions.dto.CustomErrorDTO;
-import com.github.FernandoNakasone.ms_pedidos.exceptions.dto.ValidationErrorDTO;
+import com.github.gilmarmourajr.ms_pedidos.exceptions.DatabaseException;
+import com.github.gilmarmourajr.ms_pedidos.exceptions.ResourceNotFoundException;
+import com.github.gilmarmourajr.ms_pedidos.exceptions.dto.CustomErrorDTO;
+import com.github.gilmarmourajr.ms_pedidos.exceptions.dto.ValidationErrorDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

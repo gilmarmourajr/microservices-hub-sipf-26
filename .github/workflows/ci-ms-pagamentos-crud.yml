@@ -1,4 +1,4 @@
-name: CI - ms-pagamentos (crud)
+name: CI - ms-pagamentos (testes)
 
 on:
   pull_request:
@@ -25,4 +25,4 @@ jobs:
           cache: maven
 
       - name: Build ms-pagamentos      
-        run: mvn -f ms-pagamentos/pom.xml -B test
+        run: mvn -f ms-pagamentos/pom.xml -B verify

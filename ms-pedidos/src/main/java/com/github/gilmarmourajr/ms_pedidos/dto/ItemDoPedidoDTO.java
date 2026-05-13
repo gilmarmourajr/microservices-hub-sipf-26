@@ -1,6 +1,6 @@
-package com.github.FernandoNakasone.ms_pedidos.dto;
+package com.github.gilmarmourajr.ms_pedidos.dto;
 
-import com.github.FernandoNakasone.ms_pedidos.entities.ItemDoPedido;
+import com.github.gilmarmourajr.ms_pedidos.entities.ItemDoPedido;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
