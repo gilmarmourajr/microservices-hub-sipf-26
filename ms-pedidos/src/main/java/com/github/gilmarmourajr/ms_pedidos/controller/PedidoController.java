@@ -62,4 +62,9 @@ public class PedidoController {
 
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/{pedidoId}/pagamento/confirmado")
+    public void confirmarPagamento(@PathVariable Long pedidoId){
+        pedidoService.confirmarPagamento(pedidoId);
+    }
 }

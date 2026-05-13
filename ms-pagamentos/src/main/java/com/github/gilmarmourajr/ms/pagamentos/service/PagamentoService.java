@@ -1,8 +1,10 @@
 package com.github.gilmarmourajr.ms.pagamentos.service;
 
+import com.github.gilmarmourajr.ms.pagamentos.client.PedidoClient;
 import com.github.gilmarmourajr.ms.pagamentos.dto.PagamentoDTO;
 import com.github.gilmarmourajr.ms.pagamentos.entities.Pagamento;
 import com.github.gilmarmourajr.ms.pagamentos.entities.Status;
+import com.github.gilmarmourajr.ms.pagamentos.exceptions.PagamentoAprovadoException;
 import com.github.gilmarmourajr.ms.pagamentos.exceptions.ResourceNotFoundException;
 import com.github.gilmarmourajr.ms.pagamentos.repositories.PagamentoRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -17,6 +19,9 @@ public class PagamentoService {
 
     @Autowired
     PagamentoRepository pagamentoRepository;
+
+    @Autowired
+    private PedidoClient pedidoClient;
 
     @Transactional(readOnly = true)
     public List<PagamentoDTO> findAllPagamentos(){
@@ -56,6 +61,12 @@ public class PagamentoService {
     public PagamentoDTO updatePagamento(Long id, PagamentoDTO pagamentoDTO){
         try {
             Pagamento pagamento = pagamentoRepository.getReferenceById(id);
+
+            if (pagamento.getStatus().equals(Status.APROVADO)) {
+                throw new PagamentoAprovadoException(
+                        String.format("Pagamento id %d já está APROVADO e não pode ser alterado", id)
+                );
+            }
             mapperDtoToPagamento(pagamentoDTO, pagamento);
             pagamento.setStatus(pagamentoDTO.getStatus());
             pagamento = pagamentoRepository.save(pagamento);
@@ -74,6 +85,19 @@ public class PagamentoService {
 
         pagamentoRepository.deleteById(id);
 
+    }
+
+    @Transactional
+    public PagamentoDTO confirmarPagamentoDoPedido(Long id) {
+
+        Pagamento pagamento = pagamentoRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Pagamento não encontrado. ID: " + id)
+        );
+
+        pagamento.setStatus(Status.APROVADO);
+        pagamentoRepository.save(pagamento);
+        pedidoClient.confirmarPagamento(pagamento.getPedidoId());
+        return new PagamentoDTO(pagamento);
     }
 
 }
